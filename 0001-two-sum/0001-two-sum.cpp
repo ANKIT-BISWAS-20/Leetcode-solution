@@ -5,13 +5,11 @@ public:
         vector <int> ans;
         for(int i=0;i<nums.size();i++){
             if(mpp.find(target-nums[i])!=mpp.end()){
-                ans.push_back(i);
-                ans.push_back(mpp[target-nums[i]]);
-                return ans;
+                return {i,mpp[target-nums[i]]};
             }else{
                 mpp[nums[i]]=i;
             }
         }
-        return ans;
+        return {-1,-1};
     }
 };
