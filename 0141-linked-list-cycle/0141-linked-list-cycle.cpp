@@ -9,7 +9,7 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        map <ListNode* , int> mpp;
+        unordered_map <ListNode* , int> mpp;
         if (head == nullptr || head->next == nullptr) return false;
         ListNode* temp = head;
         while(temp){
