@@ -22,7 +22,7 @@ public:
     
     ListNode* merge(ListNode* Lefthead,ListNode* Righthead){
         ListNode* temp = new ListNode(0);
-        ListNode* newHead = temp;
+        ListNode* point = temp;
         while(Lefthead && Righthead){
             if(Lefthead->val <= Righthead->val){
                 temp->next = Lefthead;
@@ -36,7 +36,10 @@ public:
         }
         if(Lefthead) temp->next = Lefthead;
         else temp->next = Righthead;
-        return newHead->next;
+        ListNode* newHead = point->next;
+        point->next = nullptr;
+        delete point;
+        return newHead;
     }
     
     ListNode* sortList(ListNode* head) {
