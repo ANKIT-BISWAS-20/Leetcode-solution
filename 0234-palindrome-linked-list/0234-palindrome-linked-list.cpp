@@ -38,16 +38,22 @@ public:
         if(head == nullptr) return false;
         if(head->next == nullptr) return true;
         ListNode* temp1 = head;
-        ListNode* temp2 = findMid(head);
-        ListNode* secondHead = temp2->next;
-        temp2->next=nullptr;
+        ListNode* temp = findMid(head);
+        ListNode* secondHead = temp->next;
+        temp->next=nullptr;
         secondHead = reverse(secondHead);
-        temp2 = secondHead;
+        ListNode* temp2 = secondHead;
         while(temp2){
-            if(temp1->val != temp2->val) return false;
+            if(temp1->val != temp2->val) {
+                secondHead = reverse(secondHead);
+                temp->next = secondHead;
+                return false;
+            }
             temp1 = temp1->next;
             temp2 = temp2->next;
         }
+        secondHead = reverse(secondHead);
+        temp->next = secondHead;
         return true;
     }
 };
